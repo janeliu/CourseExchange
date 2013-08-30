@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  SLN: MyString
+  SLN: 1
+  college: 
 
 two:
   name: MyString
-  SLN: MyString
+  SLN: 1
+  college: 

@@ -1,0 +1,19 @@
+<div> Exchanging course <%=@course.name %>  </div>
+<div>Available Users: </div>
+<div>
+
+
+<% @available_users.each do |u| %>
+      <% u.wanted_courses.each do |c| %>
+       <% current_user.available_courses.each do |avail| %>
+          <%  if c.id = avail.id %>
+              <li><%= u.username %>: exchanging <%= @course.name %> for <%= avail.name %>
+                  Email: <%= u.email %>
+              </li>
+            <% end 
+         end 
+      end 
+  end %>
+
+</div>
+<%= link_to 'Back', accounts_path %>

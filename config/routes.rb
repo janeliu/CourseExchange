@@ -1,5 +1,17 @@
 CourseExchange::Application.routes.draw do
-  resources :courses
+  resources :colleges 
+    resources :courses
+  
+
+  devise_for :users 
+
+    resources :accounts do
+      post :search, on: :collection
+      post :remove, on: :collection
+    end
+    
+  
+    root to: "accounts#index"
 
 
   # The priority is based upon order of creation:

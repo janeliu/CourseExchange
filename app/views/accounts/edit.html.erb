@@ -1,0 +1,27 @@
+<%= form_tag remove_accounts_path, :method => :post do %>
+<div>
+  Available Courses:<br>
+  <% @user.available_courses.each do |avail| %>
+  <li>
+    <%= check_box_tag "available_ids[]", avail.id %>
+    <%= avail.name %></li>
+  <% end %>
+
+</div>
+
+
+<div>
+  Wanted Courses:<br>
+
+  <% @user.wanted_courses.each do |wanted| %>
+  <li>
+    <%= check_box_tag "wanted_ids[]", wanted.id %>
+    <%= wanted.name %></li>
+  <% end %>
+</div>
+<%= submit_tag "Delete" %>
+<% end %>
+<%= link_to 'Back', accounts_path %>
+
+
+

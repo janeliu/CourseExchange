@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+root = Dir.pwd
+filepath = '/db/seed_colleges.txt'
+path = root + filepath
+
+# Seed ingredients data
+College.delete_all
+open(path) do |seed_colleges|
+  seed_colleges.read.each_line do |seed_college|
+    name = seed_college.chomp
+    College.create!(:name => name)
+  end  
+end
+
+
+

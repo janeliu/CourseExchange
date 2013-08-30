@@ -1,0 +1,26 @@
+
+<div>
+  Available Courses:<br>
+  <% @user.available_courses.each do |avail| %>
+  <li><%= avail.name %></li>
+  <% end %>
+
+</div>
+
+<%= form_tag search_accounts_path, :method => :post do %>
+<div>
+  Wanted Courses:<br>
+
+  <% @user.wanted_courses.each do |wanted| %>
+  <li>
+    <%= radio_button_tag "wanted_id", wanted.id %>
+    <%= wanted.name %></li>
+  <% end %>
+</div>
+<%= submit_tag "Course Exchange" %>
+<% end %>
+
+
+<%= link_to "Add new course", courses_path, id: "new_course"%>
+<%= link_to "Delete courses", edit_account_path(@account) %>
+
