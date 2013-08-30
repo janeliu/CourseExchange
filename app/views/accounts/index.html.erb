@@ -1,26 +1,32 @@
 
-<div>
-  Available Courses:<br>
+<div id="whole" class="row">
+<div class="span5">
+  <h4>Available Courses:</h4>
   <% @user.available_courses.each do |avail| %>
-  <li><%= avail.name %></li>
+  <p>
+  <%= avail.name %><br/>
+  </p>
   <% end %>
 
 </div>
-
+<div class="span5">
 <%= form_tag search_accounts_path, :method => :post do %>
-<div>
-  Wanted Courses:<br>
+
+  <h4>Wanted Courses:</h4>
 
   <% @user.wanted_courses.each do |wanted| %>
-  <li>
+    <p>
     <%= radio_button_tag "wanted_id", wanted.id %>
-    <%= wanted.name %></li>
+    <%= wanted.name %><br/>
+    </p>
   <% end %>
-</div>
-<%= submit_tag "Course Exchange" %>
+
+<div id="away"><%= submit_tag "Course Exchange", class: 'btn btn-info' %></div>
 <% end %>
 
-
-<%= link_to "Add new course", courses_path, id: "new_course"%>
-<%= link_to "Delete courses", edit_account_path(@account) %>
-
+</div>
+</div>
+<div class="links">
+<%= link_to "Add new course", courses_path, id: "new_course", class: 'btn btn-small btn-primary' %>
+<%= link_to "Delete courses", edit_account_path(@account), id: "delete_course", class: 'btn btn-small btn-danger' %>
+</div>

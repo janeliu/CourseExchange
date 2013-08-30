@@ -1,19 +1,29 @@
-<div> Exchanging course <%=@course.name %>  </div>
-<div>Available Users: </div>
-<div>
-
-
+<table class="table table-hover">
+<h5> Exchanging course <em><%=@course.name %></em>  </h5>
+<thead>
+<th>
+  User
+</th>
+<th>
+  Exchanging Course
+</th>
+<th>
+  Email
+</th>
+</thead>
+<tbody>
 <% @available_users.each do |u| %>
       <% u.wanted_courses.each do |c| %>
        <% current_user.available_courses.each do |avail| %>
-          <%  if c.id = avail.id %>
-              <li><%= u.username %>: exchanging <%= @course.name %> for <%= avail.name %>
-                  Email: <%= u.email %>
-              </li>
-            <% end 
-         end 
-      end 
-  end %>
-
-</div>
-<%= link_to 'Back', accounts_path %>
+          <% if c.id == avail.id %>
+              <td><%= u.username %></td>
+              <td> exchanging <%= @course.name %> for <%= avail.name %> </td>
+              <td><%= u.email %>
+              </td>
+            <% end %>
+         <%end %>
+     <% end %>
+  <%end %>
+</tbody>
+</table>
+<%= link_to 'Back', accounts_path, class: 'btn btn-small' %>
